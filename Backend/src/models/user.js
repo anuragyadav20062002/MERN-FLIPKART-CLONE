@@ -1,6 +1,6 @@
 const { timeStamp } = require("console")
 const mongoose = require("mongoose")
-const { use } = require("../routes/user")
+const bcrypt = require("bcrypt")
 
 const userSchema = new mongoose.Schema(
   {
@@ -47,5 +47,9 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
+
+userSchema.virtual("password").set(function (password) {
+  //this.hash_password =
+})
 
 module.exports = mongoose.model("User", userSchema)
